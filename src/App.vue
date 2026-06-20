@@ -5,9 +5,12 @@ import { store, recordAnswer, isBookmarked, toggleBookmark, resetAll } from "./s
 
 const BLOG_URL = "https://kc-notes.com";
 
+const LEARN_URL = "https://kc-notes.com/category/learn/";
+
 const view = ref("home");
 const session = ref([]);
 const sessionTitle = ref("");
+const sessionLesson = ref("");
 const idx = ref(0);
 const chosen = ref(null);
 const revealed = ref(false);
@@ -34,10 +37,11 @@ function catStat(cat) {
   return { answered: ans.length, total: ids.length, correct: cor.length };
 }
 
-function start(title, questions) {
+function start(title, questions, lessonUrl = "") {
   if (!questions.length) return;
   session.value = questions;
   sessionTitle.value = title;
+  sessionLesson.value = lessonUrl;
   idx.value = 0;
   chosen.value = null;
   revealed.value = false;
@@ -102,7 +106,12 @@ function choiceClass(i) {
 
       <h2>カテゴリを選ぶ</h2>
       <div class="cards">
-        <button v-for="cat in categories" :key="cat.id" class="card" @click="start(cat.name, cat.questions)">
+        <button
+          v-for="cat in categories"
+          :key="cat.id"
+          class="card"
+          @click="start(cat.name, cat.questions, cat.lessonUrl)"
+        >
           <div class="card-name">{{ cat.name }}</div>
           <div class="card-desc">{{ cat.desc }}</div>
           <div class="bar-bg">
@@ -148,8 +157,12 @@ function choiceClass(i) {
     <section v-else-if="view === 'result'" class="result">
       <h1>結果</h1>
       <p class="score">{{ sessionTitle }}：{{ sessionCorrect }} / {{ session.length }} 正解</p>
+      <p class="learn-cta">
+        📖 このテーマを記事で学ぶ：
+        <a :href="sessionLesson || LEARN_URL" target="_blank" rel="noopener">解説を読む →</a>
+      </p>
       <div class="actions">
-        <button class="btn" @click="start(sessionTitle, session)">もう一度</button>
+        <button class="btn" @click="start(sessionTitle, session, sessionLesson)">もう一度</button>
         <button class="btn ghost" @click="view = 'home'">トップへ</button>
       </div>
     </section>

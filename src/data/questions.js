@@ -6,6 +6,7 @@ export const categories = [
     id: "kihon",
     name: "株式投資の基礎",
     desc: "株とは何か・株主の権利・少額投資の基本",
+    lessonUrl: "https://kc-notes.com/learn/lesson-01-what-is-stock",
     questions: [
       {
         id: "kihon-1",
@@ -53,6 +54,7 @@ export const categories = [
     id: "ugoki",
     name: "株価はなぜ動く",
     desc: "市場・業種・個別の3要因と為替の影響",
+    lessonUrl: "https://kc-notes.com/learn/lesson-02-why-stocks-move",
     questions: [
       {
         id: "ugoki-1",
@@ -100,6 +102,7 @@ export const categories = [
     id: "nisa",
     name: "NISA・制度・注文",
     desc: "新NISA・非課税・注文方法の基本",
+    lessonUrl: "https://kc-notes.com/learn/lesson-03-new-nisa",
     questions: [
       {
         id: "nisa-1",
@@ -147,6 +150,7 @@ export const categories = [
     id: "shihyo",
     name: "指標とリスク管理",
     desc: "PER・PBR・配当利回りと、負けないための基本",
+    lessonUrl: "https://kc-notes.com/learn/lesson-05-key-metrics",
     questions: [
       {
         id: "shihyo-1",
