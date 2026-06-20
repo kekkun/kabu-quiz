@@ -1,0 +1,279 @@
+/* KCのノート 株クイズ — ブランド配色(濃インディゴ×ティール) */
+@import url("https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap");
+
+:root {
+  --navy: #1e2a4a;
+  --teal: #16b5a6;
+  --teal-d: #0e8c80;
+  --bg: #f4f7fa;
+  --card: #ffffff;
+  --text: #2c333f;
+  --muted: #6b7480;
+  --border: #e3e8ef;
+  --ok: #1f9d57;
+  --ng: #d64545;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans JP", system-ui, sans-serif;
+  line-height: 1.8;
+}
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.topbar {
+  background: var(--navy);
+  color: #fff;
+}
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+.brand {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+}
+.bloglink {
+  color: #cfeee9;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.hero {
+  text-align: center;
+  padding: 28px 0 12px;
+}
+.hero h1 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  color: var(--navy);
+  margin: 0 0 8px;
+}
+.hero p {
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+.stat {
+  display: inline-flex;
+  gap: 18px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 20px;
+}
+.stat b {
+  color: var(--teal-d);
+}
+
+h2 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  color: var(--navy);
+  border-left: 5px solid var(--teal);
+  padding-left: 0.5em;
+  margin: 28px 0 12px;
+}
+
+.btn {
+  font-family: inherit;
+  background: var(--teal);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn:hover {
+  background: var(--teal-d);
+}
+.btn:disabled {
+  background: #c5ccd6;
+  cursor: not-allowed;
+}
+.btn.ghost {
+  background: #fff;
+  color: var(--navy);
+  border: 1px solid var(--border);
+}
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 8px 0;
+}
+.link {
+  background: none;
+  border: 0;
+  color: var(--teal-d);
+  cursor: pointer;
+  text-decoration: underline;
+  font: inherit;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 560px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+.card {
+  text-align: left;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(30, 42, 74, 0.1);
+}
+.card-name {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1.05em;
+}
+.card-desc {
+  color: var(--muted);
+  font-size: 0.85em;
+  margin: 4px 0 10px;
+}
+.bar-bg {
+  background: var(--border);
+  border-radius: 999px;
+  height: 6px;
+  overflow: hidden;
+}
+.bar-fill {
+  background: var(--teal);
+  height: 100%;
+}
+.card-meta {
+  color: var(--muted);
+  font-size: 0.8em;
+  margin-top: 6px;
+}
+.reset {
+  text-align: center;
+  margin: 28px 0;
+}
+
+.quiz-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0 12px;
+  color: var(--muted);
+}
+.star {
+  background: none;
+  border: 0;
+  font-size: 1.4em;
+  color: #cbd2db;
+  cursor: pointer;
+}
+.star.on {
+  color: #f5b301;
+}
+.qcard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+}
+.qtext {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1.15em;
+  margin: 0 0 16px;
+}
+.choice {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 16px;
+  margin: 8px 0;
+  font: inherit;
+  cursor: pointer;
+}
+.choice:hover:not(:disabled) {
+  border-color: var(--teal);
+}
+.choice.correct {
+  border-color: var(--ok);
+  background: #eaf7f0;
+  font-weight: 700;
+}
+.choice.wrong {
+  border-color: var(--ng);
+  background: #fdeaea;
+}
+.feedback {
+  margin-top: 14px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+.feedback .ok {
+  color: var(--ok);
+  font-weight: 700;
+  margin: 0;
+}
+.feedback .ng {
+  color: var(--ng);
+  font-weight: 700;
+  margin: 0;
+}
+.feedback .exp {
+  color: var(--text);
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 8px 0 14px;
+}
+
+.result {
+  text-align: center;
+  padding: 30px 0;
+}
+.result h1 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  color: var(--navy);
+}
+.score {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--teal-d);
+  margin: 10px 0 20px;
+}
+
+.foot {
+  color: var(--muted);
+  font-size: 0.8em;
+  text-align: center;
+  margin: 40px auto;
+}
+.foot a {
+  color: var(--teal-d);
+}
